@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Главная страница</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #68507B;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.task h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.task p {
+    color: #666;
+}
+
+.task .status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.status.pending {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+.status.in-progress {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.status.completed {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.add-task {
+    margin-top: 20px;
+}
+
+.add-task input {
+    width: calc(100% - 70px);
+    padding: 20px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.add-task button {
+    width: 100px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.projects {
+    margin-top: 40px;
+}
+
+.projects h2 {
+    color: #333;
+}
+
+.project {
+    margin-bottom: 10px;
+}
+
+.project label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.project select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Мои задачи</h1>
+    
+    <!-- Форма добавления новой задачи -->
+    <div class="add-task">
+        <input type="text" placeholder="Заголовок задачи">
+        <button>Добавить</button>
+    </div>
+    
+    <!-- Список задач -->
+    <div class="tasks">
+        <div class="task">
+            <h3>Задача 1</h3>
+            <p>Описание задачи...</p>
+            <div class="status pending">В ожидании</div>
+        </div>
+        <div class="task">
+            <h3>Задача 2</h3>
+            <p>Описание задачи...</p>
+            <div class="status in-progress">В процессе</div>
+        </div>
+        <div class="task">
+            <h3>Задача 3</h3>
+            <p>Описание задачи...</p>
+            <div class="status completed">Завершено</div>
+        </div>
+    </div>
+    
+    <!-- Управление проектами -->
+    <div class="projects">
+        <h2>Проекты и категории</h2>
+        <div class="project">
+            <label for="project">Проект:</label>
+            <select id="project">
+                <option value="project1">Проект 1</option>
+                <option value="project2">Проект 2</option>
+                <option value="project3">Проект 3</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

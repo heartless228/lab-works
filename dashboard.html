@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Главная страница</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2554b1;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #eaeaea;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.task h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.task p {
+    color: #666;
+}
+
+.task .status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.task2 {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.task2 h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.task2 p {
+    color: #666;
+}
+
+.task2 .status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.task3 {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.task3 h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.task3 p {
+    color: #666;
+}
+
+.task3 .status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.status.pending {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+.status.in-progress {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.status.completed {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.buy {
+    background-color: #a72828; 
+    color: #fff; 
+    padding: 5px 10px; 
+    border-radius: 3px; 
+    font-weight: bold; 
+    display: inline-block; 
+    padding: 5px 10px; 
+    margin: 0; 
+    border: none; 
+}
+
+
+.add-task {
+    margin-top: 20px;
+}
+
+.add-task input {
+    width: calc(100% - 70px);
+    padding: 20px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.add-task button {
+    width: 100px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.projects {
+    margin-top: 40px;
+}
+
+.projects h2 {
+    color: #333;
+}
+
+.project {
+    margin-bottom: 10px;
+}
+
+.project label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.project select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.task img {
+    width: 240px;
+    height: 170px;
+}
+
+.task2 img {
+    width: 240px;
+    height: 160px;
+}
+
+.task3 img {
+    width: 220px;
+    height: 200px;
+}
+
+.more-details {
+    background-color: #a72828; 
+    color: #fff; 
+    padding: 5px 10px; 
+    border-radius: 3px; 
+    font-weight: bold; 
+    display: inline-block; 
+    padding: 5px 10px; 
+    margin: 0; 
+    border: none; 
+}
+.completed-tasks {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.completed-tasks button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.completed-tasks button:hover {
+    background-color: #218838;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Все задачи</h1>
+    <div class="add-task">
+        <form id="device-form">
+            <input type="text" id="device-name" placeholder="Название устройства">
+            <input type="text" id="device-problem" placeholder="Описание проблемы">
+            <button type="button" onclick="addDevice()">Добавить</button>
+        </form>
+    </div>
+    
+    <div class="tasks">
+        <div class="task">
+            <h2>Ремонт ноутбука</h2>
+            <h3>Модель нотбука:Asus ROG Zephyrus G14</h3>
+            <img src="C:\Users\User\OneDrive\Рабочий стол\for\csm_AKA1025_2c3aa41706.jpg" alt="Ноут наш">
+            <img src="C:\Users\User\OneDrive\Рабочий стол\for\csm_AKA1012_5738529168.jpg" alt="Ноут">
+            <img src="C:\Users\User\OneDrive\Рабочий стол\for\AKA1039.jpg" alt="геймпад">
+            <img src="C:\Users\User\OneDrive\Рабочий стол\for\AKA1034.jpg" alt="ноут">
+            <img src="C:\Users\User\OneDrive\Рабочий стол\for\AKA1020.jpg" alt="виде">
+            <img src="C:\Users\User\OneDrive\Рабочий стол\for\internals-3.jpg" alt="снутри">
+            <h3>Проблема:Перегрев ноутбука,снижение производительности,не работает вентилятор,замена платы</h3>
+            <div class="status pending">В ожидании</div>
+            <p></p>
+            <button class="more-details" onclick="location.href='nout.html';">Подробнее</button>
+        </div>
+
+        <div class="task2">
+            <h2>Ремонт монитора</h2>
+            <h3>Модель монитора:Apple Studio Display</h3>
+            <img src="C:\Users\User\OneDrive\Рабочий стол\for\izobrazhenie-studio-display-788x458.jpg" alt="моник">
+            <img src="C:\Users\User\OneDrive\Рабочий стол\for\OIP (1).jpg" alt="сзади">
+            <img src="C:\Users\User\OneDrive\Рабочий стол\for\DIY-Apple-Studio-Display.jpg" alt="ремонт">
+            <h3>Проблема:На экране есть черные пиксели и есть зелённые полоски</h3>
+            <div class="status in-progress">В процессе</div>
+            <p></p>
+            <button class="more-details" onclick="location.href='monik.html';">Подробнее</button>
+        </div>
+        <div class="task3">
+            <h2>Собранный ПК</h2>
+            <h3>Модель ПК: EDELWEISS SPHINX</h3>
+            <img src="C:\Users\User\OneDrive\Рабочий стол\for\1655ab6f76f7caa856217de2c3bfe4bd.png" alt="вариан1">
+            <img src="C:\Users\User\OneDrive\Рабочий стол\for\5fa4db2c179054fb5204de92a0248e50.png" alt="вариан2">
+            <h3>EDELWEISS SPHINX - игровой компьютер собранный на базе современных компонентов. 
+            SPHINX станет идеальным решением если вам необходима универсальная станция, 
+            как для игр так и работы с графическими или видео-приложениями.</h3>
+            <h4>
+                <P>Видео-карта:NVIDIA GEFORCE RTX 4070 12ГБ</P>
+                <P>Процессор:AMD Ryzen 5 5600 3700МГц</P>
+                <P>Охлождение:ID-COOLING SE-224-RGB</P>
+                <P>Оперативная память:16 ГБ DDR4 R 3700МГц</P>
+                <P>Материнская плата:GIGABYTE B550</P>
+                <P>Диск SSD:1000 ГБ MSI SPATIUM M.2 </P>
+                <P>Блок питания:700W Zalman</P>
+                <P>Корпус:MSI MAG VAMPIRIC 010</P>
+            </h4>
+            <button class="buy" onclick="location.href='https://edelws.ru/pc-amd/edelweiss_sphinx/'">Купить</button>
+            <p> </p>
+            <div class="status completed">Завершено</div>
+        </div>
+    </div>
+    <div class="completed-tasks">
+        <button onclick="location.href='podklass.html';">Посмотреть завершенные</button>
+    </div>
+    <script>
+        function addDevice() {
+            var deviceName = document.getElementById("device-name").value;
+            var deviceProblem = document.getElementById("device-problem").value;
+            var deviceImage = document.getElementById("device-image").files[0];
+        
+            var formData = new FormData();
+            formData.append("deviceName", deviceName);
+            formData.append("deviceProblem", deviceProblem);
+            formData.append("deviceImage", deviceImage);
+        
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "add_device.php", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Обработка ответа от сервера
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send(formData);
+        }
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веб-сайт кофейни</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="assets/style.css">
+
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+    
+    :root{
+        --main-color:#d3ad7f;
+        --main-color-box-bg: #b96702;
+        --main-color-menu-bg: #8d4925;
+        --black:#606060;
+        --bg:#935a00;
+        --border:.1rem solid rgba(255,255,255,.3);
+    }
+    
+    *{
+        font-family: 'Roboto', sans-serif;
+        margin:0; padding:0;
+        box-sizing: border-box;
+        outline: none; border:none;
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: .2s linear;
+    }
+    
+    html{
+        font-size: 62.5%;
+        overflow-x: hidden;
+        scroll-padding-top: 9rem;
+        scroll-behavior: smooth;
+    }
+    
+    html::-webkit-scrollbar{
+        width: .8rem;
+    }
+    
+    html::-webkit-scrollbar-track{
+        background: transparent;
+    }
+    
+    html::-webkit-scrollbar-thumb{
+        background: #fff;
+        border-radius: 5rem;
+    }
+    
+    body{
+        background: var(--bg);
+    }
+    
+    section{
+        padding:2rem 7%;
+    }
+    
+    .heading{
+        text-align: center;
+        color:#fff;
+        text-transform: uppercase;
+        padding-bottom: 3.5rem;
+        font-size: 4rem;
+    }
+    
+    .heading span{
+        color:var(--main-color);
+        text-transform: uppercase;
+    }
+    
+    .btn{
+        margin-top: 1rem;
+        display: inline-block;
+        padding:.9rem 3rem;
+        font-size: 1.7rem;
+        color:#fff;
+        background: var(--main-color);
+        cursor: pointer;
+    }
+    
+    .btn:hover{
+        letter-spacing: .2rem;
+    }
+    
+    .header{
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding:1.5rem 7%;
+        border-bottom: var(--border);
+        position: fixed;
+        top:0; left: 0; right: 0;
+        z-index: 1000;
+    }
+    
+    .header .logo img{
+        height: 6rem;
+    }
+    
+    .header .navbar a{
+        margin:0 1rem;
+        font-size: 1.6rem;
+        color:#fff;
+    }
+    
+    .header .navbar a:hover{
+        color:var(--main-color);
+        border-bottom: .1rem solid var(--main-color);
+        padding-bottom: .5rem;
+    }
+    
+    .header .icons div{
+        color:#fff;
+        cursor: pointer;
+        font-size: 2.5rem;
+        margin-left: 2rem;
+    }
+    
+    .header .icons div:hover{
+        color:var(--main-color);
+    }
+    
+    #menu-btn{
+        display: none;
+    }
+    
+    .header .search-form{
+        position: absolute;
+        top:115%; right: 7%;
+        background: #fff;
+        width: 50rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+    
+    .header .search-form.active{
+        transform: scaleY(1);
+    }
+    
+    .header .search-form input{
+        height: 100%;
+        width: 100%;
+        font-size: 1.6rem;
+        color:var(--black);
+        padding:1rem;
+        text-transform: none;
+    }
+    
+    .header .search-form label{
+        cursor: pointer;
+        font-size: 2.2rem;
+        margin-right: 1.5rem;
+        color:var(--black);
+    }
+    
+    .header .search-form label:hover{
+        color:var(--main-color);
+    }
+    
+    .header .cart-items-container{
+        position: absolute;
+        top:100%;
+        right: -100%;
+        height: calc(100vh - 9.5rem);
+        width: 35rem;
+        background: var(--main-color-menu-bg);
+        padding:0 1.5rem;
+    }
+    
+    .header .cart-items-container.active{
+        right: 0;
+    }
+    
+    .header .cart-items-container .cart-item{
+        position: relative;
+        margin:2rem 0;
+        display: flex;
+        align-items: center;
+        gap:1.5rem;
+    }
+    
+    .header .cart-items-container .cart-item .fa-times{
+        position: absolute;
+        top:1rem;
+        right: 1rem;
+        font-size: 2rem;
+        cursor: pointer;
+        color: var(--black);
+    }
+    
+    .header .cart-items-container .cart-item .fa-times:hover{
+        color:var(--main-color);
+    }
+    
+    .header .cart-items-container .cart-item img{
+        height: 7rem;
+    }
+    
+    .header .cart-items-container .cart-item .content h3{
+        font-size: 2rem;
+        color:var(--black);
+        padding-bottom: .5rem;
+    }
+    
+    .header .cart-items-container .cart-item .content .price{
+        font-size: 1.5rem;
+        color:var(--main-color);
+    }
+    
+    .header .cart-items-container .btn{
+        width: 100%;
+        text-align: center;
+    }
+    
+    .home{
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: url(images/home-img.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .home .content{
+        max-width: 60rem;
+    }
+    .home .content h3{
+        font-size: 6rem;
+        text-transform: uppercase;
+        color: #fff;
+    }
+    .home .content p{
+        font-size: 2rem;
+        text-transform: uppercase;
+        color: #fff;
+        font-weight: lighter;
+        line-height: 1.8;
+        padding: 1rem 0;
+    }
+    /*about section*/
+    .about .row{
+        display: flex;
+        align-items: center;
+        background: var(--black);
+        flex-wrap: wrap;
+    }
+    .about .row .image{
+        flex: 1 1 45rem;
+    }
+    .about .row .content{
+        flex: 1 1 45rem;
+        padding: 2rem;
+    }
+    .about .row .content h3{
+        font-size: 3rem;
+        color: #fff;
+    }
+    .about .row .content p{
+        font-size: 1.6rem;
+        color: #ccc;
+        padding: 1rem 0;
+        line-height: 1.8;
+    }
+    .about .row .image img{
+        width: 100%;
+    }
+    /* menu section*/
+    .menu .box-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit , minmax(30rem,1fr));
+        gap: 1.5rem;
+    }
+    .menu .box-container .box{
+        padding: 5rem;
+        text-align: center;
+        border: var(--border);
+    }
+    
+    .menu .box-container .box img{
+        height: 10rem;
+    }
+    .menu .box-container .box h3{
+        color: #fff;
+        font-size: 2rem;
+        padding: 1rem 0;
+    }
+    .menu .box-container .box .price{
+        color: #fff;
+        font-size: 2.5rem;
+        padding: 0.5rem 0;
+    }
+    .menu .box-container .box .price span{
+        color: #fff;
+        font-size: 1.5rem;
+        text-decoration: line-through;
+    }
+    .menu .box-container .box:hover{
+        background: var(--main-color-box-bg);
+    }
+    
+    .menu .box-container .box:hover >*{
+        color: var(--black);
+    }
+    
+    
+    /*products section*/
+    .products .box-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit , minmax(30rem,1fr));
+        gap: 1.5rem;
+    
+    }
+    .products .box-container .box{
+        text-align: center;
+        border: var(--border);
+        padding: 2rem;
+    }
+    
+    
+    .products .box-container .box .icons a{
+        height: 5rem;
+        width: 5rem;
+        line-height: 5rem;
+        font-size: 2rem;
+        border: var(--border);
+        color: #fff;
+        margin: 0.3rem;
+    }
+    
+    .products .box-container .box .icons a:hover{
+        background: var(--main-color);
+    }
+    .products .box-container .box .image{
+        padding: 2.5rem 0;
+    }
+    
+    
+    .products .box-container .box .image img{
+        height: 25rem;
+    }
+    .products .box-container .box .content h3{
+        color: #fff;
+        font-size: 2.5rem;
+    }
+    .products .box-container .box .content .stars{
+        padding: 1.5rem;
+    }
+    .products .box-container .box .content .stars{
+        font-size: 1.7rem;
+        color: var(--main-color);
+    }
+    .products .box-container .box .content .price{
+        color: #fff;
+        font-size: 2.5rem;
+    }
+    .products .box-container .box .content .price span{
+        font-size: 1.5rem;
+        text-decoration: line-through;
+        font-weight: lighter;
+    }
+    
+    /* review section*/
+    .review .box-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit , minmax(30rem,1fr));
+        gap: 1.5rem;
+    }
+    .review .box-container .box{
+        border: var(--border);
+        text-align: center;
+        padding:  3rem 2rem;
+    }
+    .review .box-container .box p{
+        font-size: 1.5rem;
+        line-height: 1.8;
+        color: #ccc;
+        padding: 2rem 0;
+    }
+    .review .box-container .box .user{
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .review .box-container .box h3{
+        padding: 1rem 0;
+        font-size: 2rem;
+        color: #fff;
+    }
+    
+    .review .box-container .box .stars i{
+        font-size: 1.5rem;
+        color: var(--main-color);
+    }
+    /*contact section*/
+    .contact .row{
+        display: flex;
+        background:var(--black);
+        flex-wrap: wrap;
+        gap:1rem;
+    }
+    
+    .contact .row .map{
+        flex:1 1 45rem;
+        width: 100%;
+        object-fit: cover;
+    }
+    
+    .contact .row form{
+        flex:1 1 45rem;
+        padding:5rem 2rem;
+        text-align: center;
+    }
+    
+    .contact .row form h3{
+        text-transform: uppercase;
+        font-size: 3.5rem;
+        color:#fff;
+    }
+    
+    .contact .row form .inputBox{
+        display: flex;
+        align-items: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        background:var(--bg);
+        border:var(--border);
+    }
+    
+    .contact .row form .inputBox span{
+        color:#fff;
+        font-size: 2rem;
+        padding-left: 2rem;
+    }
+    
+    .contact .row form .inputBox input{
+        width: 100%;
+        padding:2rem;
+        font-size: 1.7rem;
+        color:#fff;
+        text-transform: none;
+        background:none;
+    }
+    
+    
+    .blogs .box-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        gap:1.5rem;
+    }
+    
+    .blogs .box-container .box{
+        border:var(--border);
+    }
+    
+    .blogs .box-container .box .image{
+        height: 25rem;
+        overflow:hidden;
+        width: 100%;
+    }
+    
+    .blogs .box-container .box .image img{
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+    
+    .blogs .box-container .box:hover .image img{
+        transform: scale(1.2);
+    }
+    
+    
+    
+    .blogs .box-container .box .content{
+        padding: 2rem;
+    }
+    
+    
+    .blogs .box-container .box .content .title{
+        font-size: 2.5rem;
+        line-height: 1.5;
+        color: #fff;
+    }
+    .blogs .box-container .box .content .title:hover{
+        color: var(--main-color);
+    }
+    .blogs .box-container .box .content span{
+        color: var(--main-color);
+        display: block;
+        padding-top: 1rem;
+        font-size: 2rem;
+    }
+    .blogs .box-container .box .content p{
+        font-size: 1.6rem;
+        line-height: 1.8;
+        color: #ccc;
+        padding: 1rem 0;
+    }
+    
+    /*footer section*/
+    .footer{
+        background:var(--black);
+        text-align: center;
+    }
+    
+    .footer .share{
+        padding:1rem 0;
+    }
+    
+    .footer .share a{
+        height: 5rem;
+        width: 5rem;
+        line-height: 5rem;
+        font-size: 2rem;
+        color:#fff;
+        border:var(--border);
+        margin:.3rem;
+        border-radius: 50%;
+    }
+    
+    .footer .share a:hover{
+        background-color: var(--main-color);
+    }
+    
+    .footer .links{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding:2rem 0;
+        gap:1rem;
+    }
+    
+    .footer .links a{
+        padding:.7rem 2rem;
+        color:#fff;
+        border:var(--border);
+        font-size: 2rem;
+    }
+    
+    .footer .links a:hover{
+        background:var(--main-color);
+    }
+    
+    .footer .credit{
+        color:#fff;
+        font-weight: lighter;
+        font-size: 2rem;
+    
+    }
+    
+    
+    .footer .credit .developer-info a{
+        color: var(--main-color);
+        font-weight: 400;
+        font-size: 2rem;
+    }
+    .footer .credit .developer-info{
+        font-size: 2rem;
+    }
+    .footer .credit .orignal{
+        color: #fff;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    
+    
+    
+    
+    /* media queries  */
+    @media (max-width:991px){
+    
+        html{
+            font-size: 55%;
+        }
+    
+        .header{
+            padding:1.5rem 2rem;
+        }
+    
+        section{
+            padding:2rem;
+        }
+    
+    }
+    
+    @media (max-width:768px){
+    
+        #menu-btn{
+            display: inline-block;
+        }
+    
+        .header .navbar{
+            position: absolute;
+            top:100%; right: -100%;
+            background: var(--main-color-menu-bg);
+            width: 30rem;
+            height: calc(100vh - 9.5rem);
+        }
+    
+        .header .navbar.active{
+            right:0;
+        }
+    
+        .header .navbar a{
+            color: #cccccc;
+            display: block;
+            margin:1.5rem;
+            padding:.5rem;
+            font-size: 3rem;
+        }
+    
+        .header .search-form{
+            width: 90%;
+            right: 2rem;
+        }
+    
+        .home{
+            background-position: right;
+            justify-content: center;
+            text-align: center;
+        }
+    
+        .home .content h3{
+            font-size: 4.5rem;
+        }
+    
+        .home .content p{
+            font-size: 1.5rem;
+        }
+    
+    }
+    
+    @media (max-width:450px){
+    
+        html{
+            font-size: 50%;
+        }
+    
+    }
+    </style>
+
+<body>
+    
+<!-- header section starts  -->
+
+<header class="header">
+
+    <a href="#" class="logo">
+        <img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\logo.png" alt="">
+    </a>
+
+    
+<nav class="navbar">
+    <a href="#home">главная</a>
+    <a href="#about">о нас</a>
+    <a href="#menu">меню</a>
+    <a href="#products">продукты</a>
+    <a href="#review">отзывы</a>
+    <a href="#contact">контакты</a>
+</nav>
+
+
+    <div class="icons">
+        <div class="fas fa-search" id="search-btn"></div>
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-bars" id="menu-btn"></div>
+    </div>
+
+    <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here...">
+        <label for="search-box" class="fas fa-search"></label>
+    </div>
+
+    <div class="cart-items-container">
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\cart-item-1.png" alt="">
+            <div class="content">
+                <h3>1 товар</h3>
+                <div class="price">$15.99/-</div>
+            </div>
+        </div>
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\cart-item-2.png" alt="">
+            <div class="content">
+                <h3>2 товар</h3>
+                <div class="price">$15.99/-</div>
+            </div>
+        </div>
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\cart-item-3.png" alt="">
+            <div class="content">
+                <h3>3 товар</h3>
+                <div class="price">$15.99/-</div>
+            </div>
+        </div>
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\cart-item-4.png" alt="">
+            <div class="content">
+                <h3>4 товар</h3>
+                <div class="price">$15.99/-</div>
+            </div>
+        </div>
+        <a href="#" class="btn">checkout now</a>
+    </div>
+
+</header>
+
+<section class="home" id="home">
+	<div class="content">
+		<h3>Cuppify</h3>
+		<p>Откройте для себя богатый мир вкусов и ароматов нашего кофе. Насладитесь идеальным началом дня вместе с нами.</p>
+		<a href="#" class="btn">получи свое прямо сейчас</a>
+	</div>
+</section>
+
+<section class="about" id="about">
+	<h1 class="heading"><span>О</span> нас</h1>
+	<div class="row">
+		<div class="image">
+			<img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\about-img.jpg" alt="">
+		</div>
+		<div class="content">
+			<h3>что делает наш кофе особенным?</h3>
+			<p>Наш кофе особенен тем, что мы используем только лучшие сорта кофейных зерен, тщательно подбираем и обжариваем их, чтобы достичь идеального баланса вкуса и аромата. </p>
+       <p>Каждая чашка нашего кофе - это не просто напиток, это настоящее чувственное путешествие, которое удовлетворит даже самые изысканные вкусы.</p>
+			 <a href="#" class="btn">подробнее</a>
+		</div>
+	</div>
+</section>
+
+ <section class="menu" id="menu">
+	 <h1 class="heading"><span>Наш</span> меню</h1>
+	 <div class="box-container">
+		 <div class="box">
+			 <img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\menu-1.png" alt="">
+			 <h3>Espresso</h3>
+			 <div class="price">1600 тг</div>
+			 <a href="4labka korzina.html" class="btn">добавить в корзину</a>
+		 </div>
+		 <div class="box">
+			<img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\menu-2.png" alt="">
+			<h3>Americano</h3>
+			<div class="price">1600тг</div>
+			<a href="4labka korzina.html" class="btn">добавить в корзину</a>
+		</div>
+		<div class="box">
+			<img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\menu-3.png" alt="">
+			<h3>Latte</h3>
+			<div class="price">1800тг</div>
+			<a href="4labka korzina.html" class="btn">добавить в корзину</a>
+		</div>
+		<div class="box">
+			<img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\menu-4.png" alt="">
+			<h3>Flat white</h3>
+			<div class="price">1700тг</div>
+			<a href="4labka korzina.html" class="btn">добавить в корзину</a>
+		</div>
+		<div class="box">
+			<img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\menu-5.png" alt="">
+			<h3>Cappuccino</h3>
+			<div class="price">1800тг</div>
+			<a href="4labka korzina.html" class="btn">добавить в корзину</a>
+		</div>
+		<div class="box">
+			<img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\menu-6.png" alt="">
+			<h3>Irish</h3>
+			<div class="price">1800тг</div>
+			<a href="4labka korzina.html" class="btn">добавить в корзину</a>
+		</div>
+	 </div>
+ </section>
+
+
+ <section class="products" id="products">
+	 <h1 class="heading">Наш <span> продукт </span></h1>
+	 <div class="box-container">
+		 <div class="box">
+			 <div class="icons">
+				 <a href="#" class="fas fa-shopping-cart"></a>
+				 <a href="#" class="fas fa-heart"></a>
+				 <a href="#" class="fas fa-eye"></a>
+			 </div>
+			 <div class="image">
+				 <img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\product-1.png" alt="">
+			 </div>
+			 <div class="content">
+				 <h3>Nicaragua</h3>
+				 <div class="stars">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star-half-alt"></i>
+				 </div>
+				 <div class="price">7000тг</div>
+			 </div>
+		 </div>
+		 <div class="box">
+			<div class="icons">
+				<a href="#" class="fas fa-shopping-cart"></a>
+				<a href="#" class="fas fa-heart"></a>
+				<a href="#" class="fas fa-eye"></a>
+			</div>
+			<div class="image">
+				<img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\product-2.png" alt="">
+			</div>
+			<div class="content">
+				<h3>Columbia</h3>
+				<div class="stars">
+				 <i class="fas fa-star"></i>
+				 <i class="fas fa-star"></i>
+				 <i class="fas fa-star"></i>
+				 <i class="fas fa-star"></i>
+				 <i class="fas fa-star-half-alt"></i>
+				</div>
+				<div class="price">9000тг</div>
+			</div>
+		</div>
+		<div class="box">
+			<div class="icons">
+				<a href="#" class="fas fa-shopping-cart"></a>
+				<a href="#" class="fas fa-heart"></a>
+				<a href="#" class="fas fa-eye"></a>
+			</div>
+			<div class="image">
+				<img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\product-3.png" alt="">
+			</div>
+			<div class="content">
+				<h3>Peru</h3>
+				<div class="stars">
+				 <i class="fas fa-star"></i>
+				 <i class="fas fa-star"></i>
+				 <i class="fas fa-star"></i>
+				 <i class="fas fa-star"></i>
+				 <i class="fas fa-star-half-alt"></i>
+				</div>
+				<div class="price">12000тг</div>
+			</div>
+		</div>
+	 </div>
+ </section>
+<!-- products section ends -->
+<!-- review section starts -->
+<section class="review" id="review">
+	<h1 class="heading">отзыв клиента</h1>
+	<div class="box-container">
+		<div class="box">
+			<img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\quote-img.png" alt="" class="quote">
+			<p>"Просто невероятный кофе! Я посетил множество кофеен, но нигде не нашел такого великолепного вкуса как здесь. Каждая чашка напитка — это настоящий удар вкуса, который пробуждает чувства и заряжает энергией на целый день. Буду постоянным клиентом этой кофейни!"</p>
+			<img src="assets/images/pic-1.jpg" class="user" alt="">
+			<h3>Иван Петрович</h3>
+			<div class="stars">
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star-half-alt"></i>
+			 </div>
+
+		</div>
+		<div class="box">
+			<img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\quote-img.png" alt="" class="quote">
+			<p>"Я влюбилась в атмосферу этой кофейни с первого посещения. Уютный интерьер, приятная музыка, и, конечно же, потрясающий кофе. Персонал очень дружелюбный и внимательный, всегда рады порадовать своих гостей. Рекомендую всем любителям хорошего кофе и уютной атмосферы!"</p>
+			<img src="assets/images/pic-2.jpg" class="user" alt="">
+			<h3>Анна Петрова</h3>
+			<div class="stars">
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star-half-alt"></i>
+			 </div>
+
+		</div>
+		<div class="box">
+			<img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\quote-img.png" alt="" class="quote">
+			<p>"Эта кофейня просто идеальное место для встреч с друзьями или работы в уютной обстановке. Здесь всегда свежий и качественный кофе, разнообразное меню и отличный сервис. Приятные скидки для постоянных клиентов делают посещение этой кофейни еще более приятным. Однозначно мое любимое место!"</p>
+			<img src="assets/images/pic-3.jpg" class="user" alt="">
+			<h3>Александр Волков</h3>
+			<div class="stars">
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star-half-alt"></i>
+			 </div>
+
+		</div>
+	</div>
+</section>
+<!-- review section ends -->
+
+<!-- contact section srarts -->
+<section class="contact" id="contact">
+	<h1 class="heading">свяжитесь с нами</h1>
+ <div class="row">
+	<form action="">
+		<h3>связаться</h3>
+		<div class="inputBox">
+				<span class="fas fa-user"></span>
+				<input type="text" placeholder="Name">
+		</div>
+		<div class="inputBox">
+				<span class="fas fa-envelope"></span>
+				<input type="email" placeholder="Email">
+		</div>
+		<div class="inputBox">
+				<span class="fas fa-phone"></span>
+				<input type="number" placeholder="Number">
+		</div>
+		<input type="submit" value="свяжитесь сейчас" class="btn">
+    </form>
+
+   </div>
+  </div>
+</section>
+
+<section class="footer">
+
+	<div class="share">
+			<a href="#" class="fab fa-facebook-f"></a>
+			<a href="#" class="fab fa-twitter"></a>
+			<a href="#" class="fab fa-instagram"></a>
+			<a href="#" class="fab fa-linkedin"></a>
+			<a href="#" class="fab fa-pinterest"></a>
+	</div>
+
+	<div class="links">
+        <a href="#">главная</a>
+        <a href="#">о нас</a>
+        <a href="#">меню</a>
+        <a href="#">продукты</a>
+        <a href="#">отзывы</a>
+        <a href="#">контакты</a>
+    </div>
+    
+	<div class="credit">
+		Был создан 
+		<span class="developer-info"> <a href="https://www.instagram.com/whos_sh.dimash_?igsh=a2d3ZnRrYWFjeXN5&utm_source=qr" target="https://www.facebook.com/nobody"> Шайахметов Динмухаммедом</a></span> | все права защищены <br> <br>
+	</div>
+</section>
+
+<script>
+    let navbar = document.querySelector('.navbar');
+let searchForm = document.querySelector('.search-form');
+let cartItem = document.querySelector('.cart-items-container');
+
+document.querySelector('#menu-btn').onclick = () => {
+    navbar.classList.toggle('active');
+    searchForm.classList.remove('active');
+    cartItem.classList.remove('active');
+}
+
+document.querySelector('#search-btn').onclick = () => {
+    searchForm.classList.toggle('active');
+    navbar.classList.remove('active');
+    cartItem.classList.remove('active');
+}
+
+document.querySelector('#cart-btn').onclick = () =>{
+    cartItem.classList.toggle('active');
+    navbar.classList.remove('active');
+    searchForm.classList.remove('active');
+}
+
+window.onscroll = () => {
+    navbar.classList.remove('active');
+    searchForm.classList.remove('active');
+    cartItem.classList.remove('active');
+}
+</script>
+
+</body>
+</html>

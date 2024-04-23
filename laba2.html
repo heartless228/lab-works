@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMP solution</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2b60cb;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #2b60cb;
+    color: #fff;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #2b60cb;
+}
+
+h2 {
+    text-align: center;
+    color: #2b60cb;
+}
+
+#forgotPassword {
+        background-color: #2b60cb;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    #forgotPassword:hover {
+        background-color: #2554b1;
+    }
+
+    #next {
+        background-color: #2b60cb;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    #next:hover {
+        background-color: #2554b1;
+    }
+
+
+    
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Регистрация и Аутентификация</h2>
+        <form id="loginForm">
+            <input type="text" name="username" placeholder="Имя пользователя" required>
+            <input type="password" name="password" id="password" placeholder="Пароль" required>
+            <button id="next">Войти</button>
+            <button id="forgotPassword">Забыли пароль?</button>
+        </form>
+        <p id="errorMessage" style="color: rgb(224, 10, 10); display: none;">Неправильный пароль</p>
+    </div>
+    <script>
+        function login() {
+            var password = document.getElementById("password").value;
+            
+            if (password === "12345") {
+                // Перенаправление на главную страницу
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Неверный пароль!");
+            }
+        }
+        </script>
+    
+    
+
+</body>
+</html>

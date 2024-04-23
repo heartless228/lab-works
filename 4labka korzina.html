@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кофейня</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #8d4925;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffa953;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .coffee-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .coffee-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .coffee-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity input {
+            width: 40px;
+            text-align: center;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #268129;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #notification {
+            display: none;
+            color: green;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Меню кофейни</h1>
+        <div class="coffee-item">
+            <img src="C:\Users\User\OneDrive\Рабочий стол\4лабка\menu-3.png" alt="Coffee">
+            <div>
+                <h3>Ваш кофе</h3>
+                <p>Цена: 1600тг</p>
+            </div>
+            <div class="quantity">
+                <button onclick="decrementQuantity('Espresso')">-</button>
+                <input type="number" id="quantityEspresso" value="1" min="1">
+                <button onclick="incrementQuantity('Espresso')">+</button>
+            </div>
+            <button onclick="orderCoffee('Espresso')">Заказать</button>
+        </div>
+        <div id="notification"></div>
+    </div>
+
+    <script>
+        function orderCoffee(coffeeName) {
+            const quantity = document.getElementById(`quantity${coffeeName}`).value;
+            const notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            notification.innerHTML = `<p>Ваш заказ на ${quantity} чашек ${coffeeName.toLowerCase()} принят!</p>`;
+        }
+
+        function incrementQuantity(coffeeName) {
+            const input = document.getElementById(`quantity${coffeeName}`);
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decrementQuantity(coffeeName) {
+            const input = document.getElementById(`quantity${coffeeName}`);
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+    </script>
+</body>
+
+</html>

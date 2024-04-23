@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Корзина</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        background-color: #2554b1;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .cart-items {
+        margin-bottom: 20px;
+    }
+    
+    .cart-item {
+        border-bottom: 1px solid #ccc;
+        padding: 10px 0;
+    }
+    
+    .cart-item:last-child {
+        border-bottom: none;
+    }
+    
+    .cart-item img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    
+    .cart-item-details {
+        display: inline-block;
+        vertical-align: top;
+    }
+    
+    .cart-item-name {
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .cart-item-price {
+        color: #888;
+    }
+    
+    .checkout {
+        text-align: center;
+    }
+    
+    .payment-method {
+        margin-bottom: 20px;
+    }
+    
+    .delivery-method {
+        margin-bottom: 20px;
+    }
+    
+    .checkout-button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .checkout-button:hover {
+        background-color: #0056b3;
+    }
+    
+    .payment-method,
+    .delivery-method,
+    .checkout {
+        margin-bottom: 20px;
+    }
+    
+    .payment-method h2,
+    .delivery-method h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .payment-method label,
+    .delivery-method label {
+        font-size: 16px;
+        color: #666;
+        cursor: pointer; /* добавили эту строку */
+    }
+    
+    .checkout-button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .checkout-button:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Radio buttons style */
+    input[type="radio"] {
+        margin-right: 5px;
+        cursor: pointer;
+        /* display: none; */
+    }
+    
+    input[type="radio"]:checked + label {
+        font-weight: bold;
+    }
+
+
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Корзина</h1>
+    <div class="cart-items">
+        <!-- Ваши товары здесь -->
+    </div>
+
+    <div class="payment-method">
+        <h2>Выберите метод оплаты:</h2>
+        <label><input type="radio" name="payment" value="card"> Оплата с карты</label><br>
+        <label><input type="radio" name="payment" value="cash"> Оплата наличными</label>
+    </div>
+
+    <div class="delivery-method">
+        <h2>Выберите метод доставки:</h2>
+        <label><input type="radio" name="delivery" value="express"> Экспресс доставка</label><br>
+        <label><input type="radio" name="delivery" value="standard"> Стандартная доставка</label>
+    </div>
+
+    <div class="checkout">
+        <button class="checkout-button">Оформить заказ</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const checkoutButton = document.querySelector(".checkout-button");
+        checkoutButton.addEventListener("click", function() {
+            const paymentMethod = document.querySelector('input[name="payment"]:checked');
+            const deliveryMethod = document.querySelector('input[name="delivery"]:checked');
+            const cartItems = document.querySelectorAll('.cart-item-name');
+            let selectedItems = '';
+    
+            cartItems.forEach(function(item) {
+                selectedItems += item.textContent + ', ';
+            });
+            
+            if (paymentMethod && deliveryMethod) {
+                alert("Заказ успешно оформлен!\n\nВыбранные товары:\n" + selectedItems + "\nМетод оплаты: " + paymentMethod.value + "\nМетод доставки: " + deliveryMethod.value);
+            } else {
+                alert("Пожалуйста, выберите метод оплаты и метод доставки.");
+            }
+        });
+    });
+    </script>
+    
+
+</body>
+</html>
